@@ -8,6 +8,25 @@
     <li class="list-group-item">Display the result on the page via string interpolation</li>
   </ul>
   <div class="container your-code">
-    <h6>Remove this &lt;h3&gt; and create your HTML here</h6>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Input</span>
+      </div>
+      <input placeholder="Enter Input" 
+      #myInput
+      (input)="onUserInput(myInput.value)"
+      type="text" 
+      class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="alert alert-success" *ngIf="userInput && userInput.length > 0; else noInput" role="alert">
+      {{userInput}}
+    </div>
   </div>
 </div>
+
+
+<ng-template #noInput>
+  <div class="alert alert-danger" role="alert">
+   Please Enter Input
+  </div>
+</ng-template>
